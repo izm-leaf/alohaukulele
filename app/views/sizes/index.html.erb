@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+
+    <%= link_to "追加する", new_size_path, class: 'btn btn-default' %>
+
+    <% @sizes.each do |size| %>
+      <div class="row">
+        <p>サイズ名称:<%= size.size %></p>
+        <%= link_to "編集", edit_size_path(size.id), class: 'btn btn-sm btn-success' %>
+        <%= link_to "削除", size_path(size.id), method: :delete, data: { confirm: '削除していいですか？' }, class: 'btn btn-sm btn-default' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

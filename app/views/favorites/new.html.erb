@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+
+    <%= form_for(@favorite, url: choose_new_or_edit) do |f| %>
+      <% if @favorite.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @favorite.errors.count %>件のエラーがあります。</h2>
+
+          <ul>
+            <% @favorite.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <label>サイズ：<%= f.radio_button :size_id, "1" %>ソプラノ</label>
+          <label><%= f.radio_button :size_id, "2" %>コンサート</label>
+          <label><%= f.radio_button :size_id, "3" %>テナー</label>
+          <label><%= f.radio_button :size_id, "4" %>バリトン</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <label>トップの材：<%= f.radio_button :top_wood_id, "1" %>コア</label>
+          <label><%= f.radio_button :top_wood_id, "2" %>マホガニー</label>
+          <label><%= f.radio_button :top_wood_id, "3" %>マンゴー</label>
+          <label><%= f.radio_button :top_wood_id, "4" %>メイプル</label>
+          <label><%= f.radio_button :top_wood_id, "5" %>ハカランダ</label>
+          <label><%= f.radio_button :top_wood_id, "6" %>スプルース</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <label>ボディの材：<%= f.radio_button :body_wood_id, "1" %>コア</label>
+          <label><%= f.radio_button :body_wood_id, "2" %>マホガニー</label>
+          <label><%= f.radio_button :body_wood_id, "3" %>マンゴー</label>
+          <label><%= f.radio_button :body_wood_id, "4" %>メイプル</label>
+          <label><%= f.radio_button :body_wood_id, "5" %>ハカランダ</label>
+          <label><%= f.radio_button :body_wood_id, "6" %>スプルース</label>
+        </div>
+      </div>
+
+      <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+    <% end %>
+
+    <%= link_to "戻る", favorites_path, class: 'btn btn-default btn-block' %>
+
+  </div>
+</div>

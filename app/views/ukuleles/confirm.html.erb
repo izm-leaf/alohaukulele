@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+    <h3>以下の内容でいいですか？</h3>
+
+    <%= form_for(@ukulele) do |f| %>
+
+    <%= f.hidden_field :model %>
+    <%= f.hidden_field :content %>
+
+    <p>モデル:<%= @ukulele.model %></p>
+    <p>説明:<%= @ukulele.content %></p>
+
+    <%= f.submit "投稿", class: 'btn btn-info btn-block' %>
+  <% end %>
+
+  <%= form_for(@ukulele, url: new_ukulele_path, method: 'get') do |f| %>
+    <%= f.hidden_field :model %>
+    <%= f.hidden_field :content %>
+    <%= f.submit "戻る", name: 'back', class: 'btn btn-default btn-block' %>
+  <% end %>
+
+  </div>
+</div>

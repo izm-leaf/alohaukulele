@@ -1,0 +1,21 @@
+<%= form_for(@ukulele, url: choose_new_or_edit) do |f| %>
+  <% if @ukulele.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @ukulele.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+        <% @ukulele.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :model, class: 'form-control', placeholder: "モデル" %>
+  <br>
+  <%= f.text_field :content, class: 'form-control', placeholder: "説明" %>
+  <br>
+  <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+<% end %>
+
+<%= link_to "戻る", ukuleles_path, class: 'btn btn-default btn-block' %>
