@@ -32,7 +32,7 @@ class SizesController < ApplicationController
 
   def destroy
     @size.destroy
-    redirect_to sizes_path, notice: "編集しました"
+    redirect_to sizes_path, notice: "削除しました"
   end
 
   def confirm

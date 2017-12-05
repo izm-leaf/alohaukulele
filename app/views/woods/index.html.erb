@@ -1,2 +1,15 @@
-<h1>Woods#index</h1>
-<p>Find me in app/views/woods/index.html.erb</p>
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <p><%= notice %></p>
+
+    <%= link_to "追加する", new_wood_path, class: 'btn btn-default' %>
+
+    <% @woods.each do |wood| %>
+      <div class="row">
+        <p>材名称:<%= wood.wood %></p>
+        <%= link_to "編集", edit_wood_path(wood.id), class: 'btn btn-sm btn-success' %>
+        <%= link_to "削除", wood_path(wood.id), method: :delete, data: { confirm: '削除していいですか？' }, class: 'btn btn-sm btn-default' %>
+      </div>
+    <% end %>
+  </div>
+</div>

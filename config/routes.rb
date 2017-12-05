@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   get 'ukuleles' => 'ukuleles#index'
@@ -29,6 +30,10 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

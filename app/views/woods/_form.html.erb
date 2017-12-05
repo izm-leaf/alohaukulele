@@ -1,0 +1,19 @@
+<%= form_for(@wood, url: wood_choose_new_or_edit) do |f| %>
+  <% if @wood.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @wood.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+        <% @wood.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :wood, class: 'form-control', placeholder: "サイズ名" %>
+  <br>
+  <%= f.submit '追加', class: 'btn btn-info btn-block' %>
+<% end %>
+
+<%= link_to "戻る", woods_path, class: 'btn btn-default btn-block' %>

@@ -18,6 +18,7 @@ class UkulelesController < ApplicationController
     @ukulele = Ukulele.new(uku_params)
     if @ukulele.save
       redirect_to ukuleles_path, notice: "登録しました"
+      NoticeMailer.sendmail_aloha(@ukulele).deliver
     else
       render 'new'
     end
