@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-10 col-md-offset-1">
 
-    <%= form_for(@favorite, url: choose_new_or_edit) do |f| %>
+    <%= form_for(@favorite, url: fav_choose_new_or_edit) do |f| %>
       <% if @favorite.errors.any? %>
         <div id="error_explanation">
           <h2><%= @favorite.errors.count %>件のエラーがあります。</h2>
@@ -14,36 +14,42 @@
         </div>
       <% end %>
 
+      <h3>好みの一本を作るとしたら？</h3>
+
+      <p>
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <label>サイズ：<%= f.radio_button :size_id, "1" %>ソプラノ</label>
-          <label><%= f.radio_button :size_id, "2" %>コンサート</label>
-          <label><%= f.radio_button :size_id, "3" %>テナー</label>
-          <label><%= f.radio_button :size_id, "4" %>バリトン</label>
+        <div class="col-md-2 col-md-offset-1">
+          サイズ：
+        </div>
+        <div class="col-md-8">
+          <% @size.each do |size| %>
+            <lebel><%= f.radio_button :size_id, size.id %><%= size.size %></label>
+          <% end %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <label>トップの材：<%= f.radio_button :top_wood_id, "1" %>コア</label>
-          <label><%= f.radio_button :top_wood_id, "2" %>マホガニー</label>
-          <label><%= f.radio_button :top_wood_id, "3" %>マンゴー</label>
-          <label><%= f.radio_button :top_wood_id, "4" %>メイプル</label>
-          <label><%= f.radio_button :top_wood_id, "5" %>ハカランダ</label>
-          <label><%= f.radio_button :top_wood_id, "6" %>スプルース</label>
+        <div class="col-md-2 col-md-offset-1">
+          トップ材：
+        </div>
+        <div class="col-md-8">
+          <% @wood.each do |wood| %>
+            <lebel><%= f.radio_button :top_wood_id, wood.id %><%= wood.wood %></label>
+          <% end %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <label>ボディの材：<%= f.radio_button :body_wood_id, "1" %>コア</label>
-          <label><%= f.radio_button :body_wood_id, "2" %>マホガニー</label>
-          <label><%= f.radio_button :body_wood_id, "3" %>マンゴー</label>
-          <label><%= f.radio_button :body_wood_id, "4" %>メイプル</label>
-          <label><%= f.radio_button :body_wood_id, "5" %>ハカランダ</label>
-          <label><%= f.radio_button :body_wood_id, "6" %>スプルース</label>
+        <div class="col-md-2 col-md-offset-1">
+          ボディ材：
+        </div>
+        <div class="col-md-8">
+          <% @wood.each do |wood| %>
+            <lebel><%= f.radio_button :body_wood_id, wood.id %><%= wood.wood %></label>
+          <% end %>
         </div>
       </div>
+      </p>
 
       <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
     <% end %>

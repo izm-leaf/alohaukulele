@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
@@ -17,7 +18,11 @@ Rails.application.routes.draw do
 
   get 'favorites' => 'favorites#index'
 
-  resources :favorites, only: [:index, :new, :create]
+  resources :favorites, only: [:index, :new, :create] do
+    collection do
+      post :confirm
+    end
+  end
 
   get 'sizes' => 'sizes#index'
 

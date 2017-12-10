@@ -8,13 +8,6 @@
 
     <%= link_to "お気に入り投票する", new_favorite_path, class: 'btn btn-default' %>
 
-    <% @favorites.each do |favo| %>
-      <div class="row">
-        <p>サイズ:<%= favo.size %></p>
-        <p>トップの材:<%= favo.top_wood_id %></p>
-        <p>ボディの材:<%= favo.body_wood_id %></p>
-      </div>
-    <% end %>
   </div>
 </div>
 

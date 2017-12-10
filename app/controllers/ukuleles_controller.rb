@@ -7,10 +7,17 @@ class UkulelesController < ApplicationController
   end
 
   def new
+    if current_user.admin?
+    @size = Size.all
+    @wood = Wood.all
+
     if params[:back]
       @ukulele = Ukulele.new(uku_params)
     else
       @ukulele = Ukulele.new
+    end
+    else
+      redirect_to ukuleles_path
     end
   end
 
@@ -39,13 +46,15 @@ class UkulelesController < ApplicationController
 
   def confirm
     @ukulele = Ukulele.new(uku_params)
+    @size = Size.find(@ukulele.size_id)
+    @wood = Wood.find(@ukulele.wood_id)
     render :new if @ukulele.invalid?
   end
 
 private
 
   def uku_params
-    params.require(:ukulele).permit(:model, :content)
+    params.require(:ukulele).permit(:size_id, :wood_id, :image, :image_cache, :model, :content)
   end
 
   def set_uku

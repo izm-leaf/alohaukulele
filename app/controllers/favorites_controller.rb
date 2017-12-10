@@ -5,6 +5,9 @@ class FavoritesController < ApplicationController
   end
 
   def new
+    @size = Size.all
+    @wood = Wood.all
+
     if params[:back]
       @favorite = Favorite.new(favorites_params)
     else
@@ -14,6 +17,7 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new(favorites_params)
+binding.pry
     if @favorite.save
       redirect_to favorites_path, notice: "投票しました！"
     else
@@ -22,6 +26,11 @@ class FavoritesController < ApplicationController
   end
 
   def confirm
+    @favorite = Favorite.new(favorites_params)
+    @size = Size.find(@favorite.size_id) 
+    @topwood = Wood.find(@favorite.top_wood_id) 
+    @bodywood = Wood.find(@favorite.body_wood_id) 
+    render :new if @favorite.invalid?
   end
 
 private
