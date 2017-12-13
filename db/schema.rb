@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210055558) do
+ActiveRecord::Schema.define(version: 20171210072544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ukulele_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["ukulele_id"], name: "index_comments_on_ukulele_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "size_id"
@@ -77,4 +88,6 @@ ActiveRecord::Schema.define(version: 20171210055558) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "ukuleles"
+  add_foreign_key "comments", "users"
 end

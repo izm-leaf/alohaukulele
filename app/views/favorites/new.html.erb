@@ -1,17 +1,17 @@
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
 
-    <%= form_for(@favorite, url: fav_choose_new_or_edit) do |f| %>
-      <% if @favorite.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= @favorite.errors.count %>件のエラーがあります。</h2>
+    <%= form_for(@favorite, url: confirm_favorites_path) do |f| %>
 
-          <ul>
-            <% @favorite.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+      <% if @favorite.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= @favorite.errors.count %>件のエラーがあります。</h3>
+        <p>
+          <% @favorite.errors.full_messages.each do |msg| %>
+            <%= msg %><br>
+          <% end %>
+        </p>
+      </div>
       <% end %>
 
       <h3>好みの一本を作るとしたら？</h3>
@@ -19,7 +19,7 @@
       <p>
       <div class="row">
         <div class="col-md-2 col-md-offset-1">
-          サイズ：
+          <%= f.label :size_id %>
         </div>
         <div class="col-md-8">
           <% @size.each do |size| %>
@@ -30,7 +30,7 @@
 
       <div class="row">
         <div class="col-md-2 col-md-offset-1">
-          トップ材：
+          <%= f.label :top_wood_id %>
         </div>
         <div class="col-md-8">
           <% @wood.each do |wood| %>
@@ -41,7 +41,7 @@
 
       <div class="row">
         <div class="col-md-2 col-md-offset-1">
-          ボディ材：
+          <%= f.label :body_wood_id %>
         </div>
         <div class="col-md-8">
           <% @wood.each do |wood| %>

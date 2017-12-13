@@ -8,10 +8,9 @@ Rails.application.routes.draw do
 
   get 'ukuleles' => 'ukuleles#index'
 
-  resources :ukuleles, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
+  resources :ukuleles do
+    resources :comments
+    post :confirm, on: :collection
   end
 
   root 'top#index'

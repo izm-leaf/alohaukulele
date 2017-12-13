@@ -17,17 +17,16 @@
   <div class="row">
     <div class="col-xs-4">
       <ul>
-          <li><%= link_to '', root_path, class: "fa fa-facebook-official fa-lg" %></li>
+          <li><%= link_to '', root_path, class: "fa fa-music fa-lg" %></li>
       </ul>
     </div>
     <div class="col-xs-8">
       <ul>
-        <li><%= link_to "ホーム", root_path %></li>
+        <li><%= link_to "ウクレレ", ukuleles_path %></li>
         <% if user_signed_in? %>
           <% if current_user.admin? %>
             <li><%= link_to "投稿", new_ukulele_path %></li>
           <% end %>
-          <li><%= link_to "ウクレレ", ukuleles_path %></li>
           <li><%= link_to "人気投票", favorites_path %></li>
           <li><%= link_to "マイページ", edit_user_registration_path %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

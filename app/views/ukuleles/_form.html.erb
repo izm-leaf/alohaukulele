@@ -1,56 +1,50 @@
 <%= form_for(@ukulele, url: choose_new_or_edit) do |f| %>
-  <% if @ukulele.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @ukulele.errors.count %>件のエラーがあります。</h2>
 
-      <ul>
-        <% @ukulele.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <h3>投稿</h3>
-
+<% if @ukulele.errors.any? %>
+<div id="error_explanation">
+  <h3><%= @ukulele.errors.count %>件のエラーがあります。</h3>
   <p>
-  <div class="row">
-    <div class="col-md-2 col-md-offset-1">
-      サイズ：
-    </div>
-    <div class="col-md-8">
-      <% @size.each do |size| %>
-        <lebel><%= f.radio_button :size_id, size.id %><%= size.size %></label>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-2 col-md-offset-1">
-      材：
-    </div>
-    <div class="col-md-8">
-      <% @wood.each do |wood| %>
-        <lebel><%= f.radio_button :wood_id, wood.id %><%= wood.wood %></label>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <% pict_img(@ukulele) if pict_img(@ukulele) %>
-
-      <%= f.file_field :image %>
-      <%= f.hidden_field :image_cache %>
-      <br>
-      <%= f.text_field :model, class: 'form-control', placeholder: "モデル" %>
-      <br>
-      <%= f.text_field :content, class: 'form-control', placeholder: "説明" %>
-      <br>
-      <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
-      <%= link_to "戻る", ukuleles_path, class: 'btn btn-default btn-block' %>
-    </dv>
-  </div>
+    <% @ukulele.errors.full_messages.each do |msg| %>
+      <%= msg %><br>
+    <% end %>
   </p>
+</div>
+<% end %>
 
+<h3>投稿</h3>
+
+<div class="row wrapper col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-1">
+  <div class="left">
+    <p>
+    サイズ：<br>
+    <% @size.each do |size| %>
+      <lebel><%= f.radio_button :size_id, size.id %><%= size.size %></label>
+    <% end %>
+    </p>
+
+    <p>
+    材：<br>
+    <% @wood.each do |wood| %>
+      <lebel><%= f.radio_button :wood_id, wood.id %><%= wood.wood %></label>
+    <% end %>
+    </p>
+
+    <p>
+    写真：<br>
+    <%= pict_img(@ukulele) if pict_img(@ukulele) %>
+    </p>
+
+    <p>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+    </p>
+
+    <%= f.text_field :model, class: 'form-control', placeholder: "モデル" %>
+    <br>
+    <%= f.text_field :content, class: 'form-control', placeholder: "説明" %>
+    <br>
+    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+    <%= link_to "戻る", choose_new_or_edit2, class: 'btn btn-default btn-block' %>
+  </dv>
+</div>
 <% end %>

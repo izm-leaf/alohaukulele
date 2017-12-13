@@ -1,16 +1,19 @@
 ja:
   activerecord:
     models:
-      topic: "トピック"
-      friend: "お友だち"
+      ukulele: "ウクレレ"
+      favorite: "人気投票"
       user: "ユーザー"
     attributes:
-      topic:
-        content: "出来事"
-      friend:
-        name: "名前"
-        email: "メールアドレス"
-        content: "内容"
+      ukulele:
+        size_id: "サイズ"
+        wood_id: "材"
+        model: "モデル"
+        content: "説明"
+      favorite:
+        size_id: "サイズ"
+        top_wood_id: "トップ材"
+        body_wood_id: "ボディ材"
       user:
         title: "タイトル"
         name: "名前"

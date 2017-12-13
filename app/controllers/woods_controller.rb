@@ -1,4 +1,5 @@
 class WoodsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_wood, only: [:update, :edit, :destroy]
 
   def index

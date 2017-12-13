@@ -1,30 +1,34 @@
 class UkulelesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_uku, only: [:update, :edit, :destroy]
+  before_action :authenticate_user!, only: [:update, :new, :create, :edit, :confirm, :destroy]
+  before_action :set_uku, only: [:show, :update, :edit, :destroy]
+  before_action :set_size_wood, only: [:new, :edit, :confirm]
 
   def index
-    @ukuleles = Ukulele.all
+    @ukuleles = Ukulele.all.order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def show
+    @comment = @ukulele.comments.build
+    @comments = @ukulele.comments
   end
 
   def new
-    if current_user.admin?
-    @size = Size.all
-    @wood = Wood.all
-
     if params[:back]
       @ukulele = Ukulele.new(uku_params)
     else
       @ukulele = Ukulele.new
-    end
-    else
-      redirect_to ukuleles_path
     end
   end
 
   def create
     @ukulele = Ukulele.new(uku_params)
     if @ukulele.save
-      redirect_to ukuleles_path, notice: "登録しました"
+      flash[:success] = "登録しました"
+      redirect_to ukuleles_path
       NoticeMailer.sendmail_aloha(@ukulele).deliver
     else
       render 'new'
@@ -36,18 +40,18 @@ class UkulelesController < ApplicationController
 
   def update
     @ukulele.update(uku_params)
-    redirect_to ukuleles_path, notice: "編集しました"
+    flash[:success] = "編集しました"
+    redirect_to ukulele_path
   end
 
   def destroy
     @ukulele.destroy
-    redirect_to ukuleles_path, notice: "削除しました"
+    flash[:success] = "削除しました"
+    redirect_to ukuleles_path
   end
 
   def confirm
     @ukulele = Ukulele.new(uku_params)
-    @size = Size.find(@ukulele.size_id)
-    @wood = Wood.find(@ukulele.wood_id)
     render :new if @ukulele.invalid?
   end
 
@@ -61,4 +65,8 @@ private
     @ukulele = Ukulele.find(params[:id])
   end
 
+  def set_size_wood
+    @size = Size.all
+    @wood = Wood.all
+  end
 end

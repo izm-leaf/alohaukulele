@@ -1,4 +1,5 @@
 class SizesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_size, only: [:update, :edit, :destroy]
 
   def index

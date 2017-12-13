@@ -13,8 +13,8 @@
     <%= f.hidden_field :content %>
 
     <p><%= pict_img(@ukulele) if pict_img(@ukulele) %></p>
-    <p>サイズ:<%= @size.size %></p>
-    <p>材:<%= @wood.wood %></p>
+    <p>サイズ:<%= @ukulele.size.size %></p>
+    <p>材:<%= @ukulele.wood.wood %></p>
     <p>モデル:<%= @ukulele.model %></p>
     <p>説明:<%= @ukulele.content %></p>
 
@@ -24,6 +24,8 @@
   <%= form_for(@ukulele, url: new_ukulele_path, method: 'get') do |f| %>
     <%= f.hidden_field :image %>
     <%= f.hidden_field :image_cache %>
+    <%= f.hidden_field :size_id %>
+    <%= f.hidden_field :wood_id %>
     <%= f.hidden_field :model %>
     <%= f.hidden_field :content %>
     <%= f.submit "戻る", name: 'back', class: 'btn btn-default btn-block' %>

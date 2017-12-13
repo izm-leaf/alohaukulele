@@ -1,0 +1,52 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="child row">
+
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+
+    <div class="ukulele-text col-md-3">
+      <p class="left"><%= pict_img(@ukulele) if pict_img(@ukulele) %></p>
+    </div>
+
+    <div class="ukulele-text col-md-9">
+      <p class="left">サイズ　<%= @ukulele.size.size %></p>
+      <p class="left">　　材　<%= @ukulele.wood.wood %></p>
+      <p class="left">モデル　<%= @ukulele.model %></p>
+      <p class="left">　説明　<%= @ukulele.content %></p>
+      <p class="right">
+        <strong>作成時間:</strong>
+        <%= @ukulele.created_at.strftime("%y/%m/%d %p %l:%M") %>
+      </p>
+    </div>
+
+    <% if user_signed_in? %>
+    <div class="ukulele-text col-md-9 left">
+      <% if current_user.admin? %>
+        <%= link_to '編集する', edit_ukulele_path(@ukulele.id), class: 'btn btn-sm btn-success' %>
+        <%= link_to '削除する', ukulele_path(@ukulele.id), method: :delete, data: { confirm: '削除していいですか？' }, class: 'btn btn-sm btn-default' %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="child row">
+
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+
+      <p>コメント一覧</p>
+      <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments, ukulele: @ukulele } %>
+      </div>
+      <%= render partial: 'comments/form', locals: { comment: @comment, ukulele: @ukulele } %>
+    <% else %>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to '戻る', ukuleles_path %>
+  </div>
+</div>
