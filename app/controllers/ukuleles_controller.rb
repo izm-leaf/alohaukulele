@@ -2,6 +2,7 @@ class UkulelesController < ApplicationController
   before_action :authenticate_user!, only: [:update, :new, :create, :edit, :confirm, :destroy]
   before_action :set_uku, only: [:show, :update, :edit, :destroy]
   before_action :set_size_wood, only: [:new, :edit, :confirm]
+  load_and_authorize_resource :only => [:new, :edit]
 
   def index
     @ukuleles = Ukulele.all.order(created_at: :desc)

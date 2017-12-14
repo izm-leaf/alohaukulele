@@ -4,15 +4,15 @@
 
 <div class="child row">
 
-  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+  <div class="wrapper2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 
     <div class="ukulele-text col-md-3">
       <p class="left"><%= pict_img(@ukulele) if pict_img(@ukulele) %></p>
     </div>
 
     <div class="ukulele-text col-md-9">
-      <p class="left">サイズ　<%= @ukulele.size.size %></p>
-      <p class="left">　　材　<%= @ukulele.wood.wood %></p>
+      <p class="left">サイズ　<%= @ukulele.size.name %></p>
+      <p class="left">　　材　<%= @ukulele.wood.name %></p>
       <p class="left">モデル　<%= @ukulele.model %></p>
       <p class="left">　説明　<%= @ukulele.content %></p>
       <p class="right">
@@ -24,7 +24,7 @@
     <% if user_signed_in? %>
     <div class="ukulele-text col-md-9 left">
       <% if current_user.admin? %>
-        <%= link_to '編集する', edit_ukulele_path(@ukulele.id), class: 'btn btn-sm btn-success' %>
+        <%= link_to '編集する', edit_ukulele_path(@ukulele.id), class: 'btn btn-sm btn-info' %>
         <%= link_to '削除する', ukulele_path(@ukulele.id), method: :delete, data: { confirm: '削除していいですか？' }, class: 'btn btn-sm btn-default' %>
       <% end %>
     </div>
@@ -35,7 +35,7 @@
 
 <div class="child row">
 
-  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+  <div class="wrapper2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 
       <p>コメント一覧</p>
       <div id="comments_area">

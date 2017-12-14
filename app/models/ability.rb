@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     if user && user.admin?
-      can :access, :rails_admin, :new_ukulele   # grant access to rails_admin
+      can :access, :rails_admin   # grant access to rails_admin
       can :manage, :all           # allow superadmins to do anything
     end
 

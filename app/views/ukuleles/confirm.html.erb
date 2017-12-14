@@ -13,8 +13,8 @@
     <%= f.hidden_field :content %>
 
     <p><%= pict_img(@ukulele) if pict_img(@ukulele) %></p>
-    <p>サイズ:<%= @ukulele.size.size %></p>
-    <p>材:<%= @ukulele.wood.wood %></p>
+    <p>サイズ:<%= @ukulele.size.name %></p>
+    <p>材:<%= @ukulele.wood.name %></p>
     <p>モデル:<%= @ukulele.model %></p>
     <p>説明:<%= @ukulele.content %></p>
 

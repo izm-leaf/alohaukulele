@@ -1,6 +1,7 @@
 class WoodsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_wood, only: [:update, :edit, :destroy]
+  load_and_authorize_resource
 
   def index
     @woods = Wood.all
@@ -8,14 +9,14 @@ class WoodsController < ApplicationController
 
   def new
     if params[:back]
-      @wood = Wood.new(sizes_params)
+      @wood = Wood.new(wood_params)
     else
       @wood = Wood.new
     end
   end
 
   def create
-    @wood = Wood.new(woods_params)
+    @wood = Wood.new(wood_params)
     if @wood.save
       redirect_to woods_path, notice: "追加しました"
     else
@@ -27,7 +28,7 @@ class WoodsController < ApplicationController
   end
 
   def update
-    @wood.update(woods_params)
+    @wood.update(wood_params)
     redirect_to woods_path, notice: "編集しました"
   end
 
@@ -37,14 +38,14 @@ class WoodsController < ApplicationController
   end
 
   def confirm
-    @wood = Wood.new(woods_params)
+    @wood = Wood.new(wood_params)
     render :new if @wood.invalid?
   end
 
 private
 
-  def woods_params
-    params.require(:wood).permit(:wood)
+  def wood_params
+    params.require(:wood).permit(:name)
   end
 
   def set_wood

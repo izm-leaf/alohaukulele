@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 
     <%= form_for(@favorite, url: confirm_favorites_path) do |f| %>
 
@@ -16,45 +16,45 @@
 
       <h3>好みの一本を作るとしたら？</h3>
 
-      <p>
-      <div class="row">
-        <div class="col-md-2 col-md-offset-1">
+      <div class="fav-wrapper col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-4">
+        <div class="row col-md-6 col-xs-10">
           <%= f.label :size_id %>
         </div>
-        <div class="col-md-8">
+
+        <div class="row col-md-6 col-xs-10">
           <% @size.each do |size| %>
-            <lebel><%= f.radio_button :size_id, size.id %><%= size.size %></label>
+            <%= f.radio_button :size_id, size.id, {}  %> <%= size.name %><br>
           <% end %>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-2 col-md-offset-1">
+      <div class="fav-wrapper col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-4">
+        <div class="row col-md-6 col-xs-10">
           <%= f.label :top_wood_id %>
         </div>
-        <div class="col-md-8">
+        <div class="row col-md-6 col-xs-10">
           <% @wood.each do |wood| %>
-            <lebel><%= f.radio_button :top_wood_id, wood.id %><%= wood.wood %></label>
+            <%= f.radio_button :top_wood_id, wood.id, {} %> <%= wood.name %><br>
           <% end %>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-2 col-md-offset-1">
+      <div class="fav-wrapper col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-4">
+        <div class="row col-md-6 col-xs-10">
           <%= f.label :body_wood_id %>
         </div>
-        <div class="col-md-8">
+        <div class="row col-md-6 col-xs-10">
           <% @wood.each do |wood| %>
-            <lebel><%= f.radio_button :body_wood_id, wood.id %><%= wood.wood %></label>
+            <%= f.radio_button :body_wood_id, wood.id, {} %> <%= wood.name %><br>
           <% end %>
         </div>
       </div>
-      </p>
 
+      <div class="fav-wrapper col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
       <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+      <%= link_to "戻る", favorites_path, class: 'btn btn-default btn-block' %>
+      </div>
     <% end %>
-
-    <%= link_to "戻る", favorites_path, class: 'btn btn-default btn-block' %>
 
   </div>
 </div>

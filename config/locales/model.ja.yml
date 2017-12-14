@@ -10,10 +10,15 @@ ja:
         wood_id: "材"
         model: "モデル"
         content: "説明"
+        image: "写真"
       favorite:
         size_id: "サイズ"
         top_wood_id: "トップ材"
         body_wood_id: "ボディ材"
+      size:
+        size: "サイズ名称"
+      wood:
+        wood: "材名称"
       user:
         title: "タイトル"
         name: "名前"

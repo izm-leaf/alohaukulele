@@ -1,0 +1,323 @@
+User.all
+@User=User.all
+select * from User;
+User.all
+@User=User.all
+select * from User;
+\d
+select * from users;
+exit
+\q
+\d
+select * from blogs;
+select * from users:
+;
+select * from users;
+\q
+\d
+select * from contacts;
+quit
+exit
+\q
+\d
+\d users
+\d users
+\q
+\d
+\d users
+select count(*) from users:
+select count(*) from users;
+select count(*) from users:
+select count(*) from users;
+select count(*) from users;
+exit
+rails s
+quit
+exit
+exit
+\q
+\q
+delete from users;
+\q
+\d
+\d users
+select * from user;
+select * from users;
+select id, avater from users;
+select id, avatar from users;
+exit
+\q
+\d
+\d picts
+exit
+\q
+\d blogs
+\q
+\d user
+\d users
+\d users
+select id, avatar from users;
+\q
+\d users
+select id, provider from users;
+exit
+\q
+\d picts
+:q
+\q
+\d pict
+\d picts
+\q
+\d pict
+\d
+\dpicts
+\d picts
+\d picts
+exit
+\q
+\d
+\d comments
+exit
+\q
+\d
+\d blogs
+\d poems
+\d comments
+:q
+exit
+\q
+\d
+\d messages
+\d conversations
+\q
+\d
+\q
+\d messages
+\q
+^d
+\d
+\d conversations
+exit
+\q
+\d
+exit
+\q
+\d
+\d picts
+exit
+rails g migration remove_pict_to_pict pict
+\q
+\d
+\d user
+\d users
+\d users
+\q
+\d conversation
+\d
+\d convarsations
+\d conversations
+:q
+exit
+\q
+\d conversations
+\q
+\d messages;
+:q
+\q
+\d
+exit
+exit
+exit
+\q
+\d
+exit
+\q
+\d messages
+exit
+rails s
+\q
+\d
+\d topics
+exit
+\q
+\d
+\d topics
+exit
+\
+q
+\q
+\d
+\d users
+\q
+exit
+\q
+\d
+\d topics
+\q
+\d
+\d comments
+\d topics
+\q
+\d
+\d comments
+exit
+\q
+\d
+\d comments
+exit
+\q
+\d
+exit
+\q
+\d conversations;
+\q
+\d messages;
+\q
+\d users
+\d users
+select * from users;
+exit
+\q
+\d
+\d users
+exit
+\q
+\d
+\d ukuleles
+exit
+\q
+\d
+\d comments
+select * from comments;
+exit
+\q
+select * from comments;
+\q
+select * from topics;
+select * from comments;
+select count(*) from users;
+select count(*) from topics;
+select count(*) from comments;
+exit
+\q
+select * from users;
+\d users;
+\q
+\d user
+\d users
+\q
+select uid from users;
+select provider fro users;
+select provider from users;
+\d users;
+\q
+select count(*) from users;
+select count(*) from users;
+\q
+select count(*) from users;
+exit
+\q
+select count(*) from users;
+\q
+\d
+select count(*) from conversations;
+select * from comments;
+select * from conversations;
+select * from users where id=4;
+select * from users where id=5;
+select * from users where id=6;
+select * from users where id=6;
+select * from users where id=106;
+select * from users where id=107;
+select * from users where id=108;
+select * from comments;
+select count(*) from comments;
+select count(*) from conversations;;
+\q
+\d topics;
+select count(*) from topics where user_id=4;
+select * from topics where user_id=4;
+update user_id=5 from topics where id=15;
+update topics set user_id=5 where id=15;
+exit
+\q
+select * from users where id = 50;
+select * from users group by provider;
+select provider, count(*) from users group by provider;
+select avatar, count(*) from users group by avatar;
+select name from users;
+  
+exit
+\q
+update topics set user_id=6 where id=15;
+update topics set user_id=6 where id=16;
+\q
+\d
+\d ukuleles
+exit
+\q
+\d
+\d topics
+\d users
+\q
+\d
+\d ukuleles
+\d favorite
+\d favorites
+\d
+\d sizes
+\d wood
+\d woods
+select * from woods:
+:
+;
+select * from woods;
+select * from sizes;
+\d
+\q
+\d
+\d users
+\q
+\d
+\d users
+exit
+\q
+\d ukulele
+\d
+\d ukuleles
+\q
+\d
+^d ukuleles
+\d ukuleles
+\q
+\d
+\d relationships
+\q
+\d favorites
+\d sizes
+\q
+\d ukuleles
+\q
+\d favorite
+\d favorites
+exit
+\q
+\d favorites
+exit
+\q
+\d relationships
+\q
+\d
+\d favorites
+\q
+\d ukuleles
+\d favorites
+\q
+\d
+\d ukuleles
+\d favorites
+\q
+\d woods
+exit
+\q
+\s ukuleles

@@ -1,50 +1,62 @@
-<%= form_for(@ukulele, url: choose_new_or_edit) do |f| %>
+<div class="wrapper col-md-6 col-md-offset-3 col-xs-10 xol-xs-offset-1">
 
-<% if @ukulele.errors.any? %>
-<div id="error_explanation">
-  <h3><%= @ukulele.errors.count %>件のエラーがあります。</h3>
-  <p>
-    <% @ukulele.errors.full_messages.each do |msg| %>
-      <%= msg %><br>
+  <%= form_for(@ukulele, url: choose_new_or_edit) do |f| %>
+
+    <% if @ukulele.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @ukulele.errors.count %>件のエラーがあります。</h3>
+      <p>
+        <% @ukulele.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </p>
+    </div>
     <% end %>
-  </p>
+
+    <h3>投稿</h3>
+
+    <div class="wrapper col-md-8 col-md-offset-2 col-xs-10 xol-xs-offset-1">
+      <div class="row" col-md-6 col-xs-10>
+        <%= f.label :size_id %><br>
+      </div>
+      <div class="row" col-md-6 col-xs-10>
+        <% @size.each do |size| %>
+          <%= f.radio_button :size_id, size.id %><%= size.name %><br>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="wrapper col-md-8 col-md-offset-2 col-xs-10 xol-xs-offset-1">
+      <div class="row" col-md-6 col-xs-10>
+        <%= f.label :wood_id %><br>
+      </div>
+      <div class="row" col-md-6 col-xs-10>
+        <% @wood.each do |wood| %>
+          <%= f.radio_button :wood_id, wood.id %><%= wood.name %><br>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="wrapper col-md-8 col-md-offset-2 col-xs-10 xol-xs-offset-1">
+      <div class="row">
+        <%= f.label :image %><br>
+      </div>
+      <div class="row" col-md-6 col-xs-10>
+        <%= pict_img(@ukulele) if pict_img(@ukulele) %>
+        <%= f.file_field :image %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+    </div>
+
+    <div class="wrapper col-md-8 col-md-offset-2 col-xs-10 xol-xs-offset-1">
+      <div class="row" col-md-6 col-xs-10>
+        <%= f.text_field :model, class: 'form-control', placeholder: "モデル" %>
+        <br>
+        <%= f.text_field :content, class: 'form-control', placeholder: "説明" %>
+        <br>
+        <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+        <%= link_to "戻る", choose_new_or_edit2, class: 'btn btn-default btn-block' %>
+      </dv>
+    </div>
+  <% end %>
 </div>
-<% end %>
-
-<h3>投稿</h3>
-
-<div class="row wrapper col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-1">
-  <div class="left">
-    <p>
-    サイズ：<br>
-    <% @size.each do |size| %>
-      <lebel><%= f.radio_button :size_id, size.id %><%= size.size %></label>
-    <% end %>
-    </p>
-
-    <p>
-    材：<br>
-    <% @wood.each do |wood| %>
-      <lebel><%= f.radio_button :wood_id, wood.id %><%= wood.wood %></label>
-    <% end %>
-    </p>
-
-    <p>
-    写真：<br>
-    <%= pict_img(@ukulele) if pict_img(@ukulele) %>
-    </p>
-
-    <p>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-    </p>
-
-    <%= f.text_field :model, class: 'form-control', placeholder: "モデル" %>
-    <br>
-    <%= f.text_field :content, class: 'form-control', placeholder: "説明" %>
-    <br>
-    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
-    <%= link_to "戻る", choose_new_or_edit2, class: 'btn btn-default btn-block' %>
-  </dv>
-</div>
-<% end %>

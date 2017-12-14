@@ -8,32 +8,32 @@ class FavoritesController < ApplicationController
 
   def new
     if params[:back]
-      @favorite = Favorite.new(favorites_params)
+      @favorite = Favorite.new(favorite_params)
     else
       @favorite = Favorite.new
     end
   end
 
   def create
-    @favorite = Favorite.new(favorites_params)
+    @favorite = Favorite.new(favorite_params)
     @favorite.user_id = current_user.id
 
     if @favorite.save
-      redirect_to favorites_path, notice: "投票しました！"
+      flash[:success] = "ありがとうございました！"
+      redirect_to favorites_path
     else
       render 'new'
     end
   end
 
   def confirm
-binding.pry
-    @favorite = Favorite.new(favorites_params)
+    @favorite = Favorite.new(favorite_params)
     render :new if @favorite.invalid?
   end
 
 private
 
-  def favorites_params
+  def favorite_params
     params.require(:favorite).permit(:size_id, :top_wood_id, :body_wood_id)
   end
 

@@ -1,13 +1,19 @@
 .wrapper {
-  margin-bottom: 74px;
-  padding: 20px 20px 20px 35px;
+  padding: 10px;
   .row {
-    border-bottom: 1px solid #ccc;
-    padding: 20px;
     text-align: left;
     word-wrap: break-word;
   }
 }
+
+.wrapper2 {
+  padding: 30px;
+}
+
+.new {
+  text-align: left;
+}
+
 input[type="submit"].btn-block{
   margin: 15px 0;
 }

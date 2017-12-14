@@ -6,11 +6,13 @@
 
   <h3>ウクレレ</h3>
 
+  <div class="new col-md-12"><span class="label label-danger">NEW</span></div>
+
   <% @ukuleles.each do |ukulele| %>
 
-    <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+    <div class="wrapper col-md-1 col-sm-2 col-xs-4">
 
-      <p><%= link_to ukulele_path(ukulele) do %><%= pict_img(ukulele) if pict_img(ukulele) %><% end %></p>
+      <%= link_to ukulele_path(ukulele) do %><%= pict_img(ukulele) if pict_img(ukulele) %><% end %>
 
     </div>
 

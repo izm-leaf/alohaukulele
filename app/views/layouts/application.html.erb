@@ -26,6 +26,8 @@
         <% if user_signed_in? %>
           <% if current_user.admin? %>
             <li><%= link_to "投稿", new_ukulele_path %></li>
+            <li><%= link_to "サイズ", sizes_path %></li>
+            <li><%= link_to "材", woods_path %></li>
           <% end %>
           <li><%= link_to "人気投票", favorites_path %></li>
           <li><%= link_to "マイページ", edit_user_registration_path %></li>

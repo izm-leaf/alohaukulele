@@ -1,4 +1,7 @@
 class Wood < ActiveRecord::Base
+
+  validates :name, presence: true
+
   has_many :ukuleles, dependent: :destroy
 
   has_many :top_rel, foreign_key: "top_wood_id", class_name: "Favorite", dependent: :destroy

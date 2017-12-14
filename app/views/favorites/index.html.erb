@@ -1,19 +1,53 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
 <div class="container">
-  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+  <div class="col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
 
-    <p>
-    あなたのお気に入りの一本を教えてください！
-    </p>
+    <p>あなたのお気に入りの一本を教えてください！</p>
 
-    <%= link_to "お気に入り投票する", new_favorite_path, class: 'btn btn-default' %>
+    <p><%= link_to "お気に入りを投票する！", new_favorite_path, class: 'btn btn-info' %></p>
 
-    <p>
-    サイズ：<br>
-    <% @size.each do |size| %>
-    <%= size.size %> = <br>
-    <% end %>
-    </p>
+    <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+
+      <p>現在の投票数は <%= @favorites.length %> です！</p>
+
+      <div class="row col-md-9 col-md-offst-1 col-sm-10 col-sm-offset-1">
+        <div class="right col-md-4">
+          サイズ
+        </div>
+        <div class="col-md-8">
+          <% @size.each do |size| %>
+            <%= size.name %> = <%= @favorites.where(size_id: size.id).length %><br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row col-md-9 col-md-offst-1 col-sm-10 col-sm-offset-1">
+        <div class="right col-md-4">
+          トップ材<br>
+        </div>
+        <div class="col-md-8">
+          <% @wood.each do |wood| %>
+            <%= wood.name %> = <%= @favorites.where(top_wood_id: wood.id).length %><br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row col-md-9 col-md-offst-1 col-sm-10 col-sm-offset-1">
+        <div class="right col-md-4">
+          ボディ材<br>
+        </div>
+        <div class="col-md-8">
+          <% @wood.each do |wood| %>
+            <%= wood.name %> = <%= @favorites.where(body_wood_id: wood.id).length %><br>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 </div>
