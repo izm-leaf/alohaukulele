@@ -23,22 +23,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'sizes' => 'sizes#index'
-
-  resources :sizes, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
-  end
-
-  get 'woods' => 'woods#index'
-
-  resources :woods, only: [:index, :new, :create, :edit, :update, :destroy] do
-    collection do
-      post :confirm
-    end
-  end
-
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
