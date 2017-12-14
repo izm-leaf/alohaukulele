@@ -1,0 +1,25 @@
+<div class="wrapper col-md-6 col-md-offset-3 col-sm-10">
+
+<%= form_for(@wood, url: wood_choose_new_or_edit) do |f| %>
+
+  <% if @wood.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @wood.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+        <% @wood.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>材</h3>
+
+  <%= f.text_field :name, class: 'form-control', placeholder: "材名称" %>
+  <br>
+  <%= f.submit '登録', class: 'btn btn-info btn-block' %>
+<% end %>
+
+<%= link_to "戻る", woods_path, class: 'btn btn-default btn-block' %>
+</div>
