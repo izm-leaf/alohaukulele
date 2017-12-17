@@ -38,8 +38,8 @@ private
   end
 
   def set_size_wood
-    @size = Size.all
-    @wood = Wood.all
+    @size = Size.all.order(:id)
+    @wood = Wood.all.order(:id)
   end
 
 end

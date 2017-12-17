@@ -6,11 +6,9 @@
     <div id="error_explanation">
       <h2><%= @size.errors.count %>件のエラーがあります。</h2>
 
-      <ul>
-        <% @size.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+      <% @size.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
     </div>
   <% end %>
 

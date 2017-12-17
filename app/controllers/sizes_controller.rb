@@ -4,7 +4,7 @@ class SizesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @sizes = Size.all
+    @sizes = Size.all.order(:id)
   end
 
   def new

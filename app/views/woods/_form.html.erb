@@ -6,11 +6,9 @@
     <div id="error_explanation">
       <h2><%= @wood.errors.count %>件のエラーがあります。</h2>
 
-      <ul>
         <% @wood.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <%= msg %>
         <% end %>
-      </ul>
     </div>
   <% end %>
 

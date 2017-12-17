@@ -4,7 +4,7 @@ class WoodsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @woods = Wood.all
+    @woods = Wood.all.order(:id)
   end
 
   def new
