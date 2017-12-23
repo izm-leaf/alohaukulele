@@ -27,8 +27,13 @@ class FavoritesController < ApplicationController
   end
 
   def confirm
-    @favorite = Favorite.new(favorite_params)
-    render :new if @favorite.invalid?
+    if params[:favorite].blank?
+      flash[:warning] = "お好みの一本を選んでください"
+      redirect_to new_favorite_path
+    else
+      @favorite = Favorite.new(favorite_params)
+      render :new if @favorite.invalid?
+    end
   end
 
 private
