@@ -6,11 +6,17 @@ class CommentsController < ApplicationController
     @ukulele = @comment.ukulele
 
     respond_to do |format|
-      if @comment.save
-        format.html { redirect_to ukulele_path(@ukulele), notice: 'コメントを投稿しました。' }
-        format.js { render :index }
+      if ! @comment.content.blank?
+        if @comment.save
+          format.html { redirect_to ukulele_path(@ukulele), notice: 'コメントを投稿しました。' }
+          format.js { render :index }
+        else
+          format.html { redirect_to ukulele_path(@ukulele), notice: 'コメントを投稿できませんでした。' }
+          format.js { render :index }
+        end
       else
-        format.html { render :new }
+        format.html { redirect_to ukulele_path(@ukulele), notice: 'コメントを投稿できませんでした。' }
+        format.js { render :index }
       end
     end
   end
@@ -20,12 +26,12 @@ class CommentsController < ApplicationController
   end
 
   def update
-        respond_to do |format|
+    respond_to do |format|
       if @comment.update(comment_params) then
         format.html { redirect_to ukulele_path(@comment.ukulele), notice: 'コメントを更新しました。' }
         format.js { render :index }
       else
-        format.html { redirect_to ukulele_path(@comment.ukulele), notice: 'コメントを更新しませんでした。' }
+        format.html { redirect_to ukulele_path(@comment.ukulele), notice: 'コメントを更新できませんでした。' }
         format.js { render :index }
       end
     end
@@ -34,7 +40,7 @@ class CommentsController < ApplicationController
   def destroy
     respond_to do |format|
       @comment.destroy
-      format.html { redirect_to ukulele_path(@comment.ukulele), notice: 'コメントを削除しました。' }
+      format.html { redirect_to ukulele_path(@ukulele), notice: 'コメントを削除しました。' }
       format.js { render :index }
     end
   end

@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
 
   def index
     @favorites = Favorite.all
+    set_size_chart_data
   end
 
   def new
@@ -45,6 +46,10 @@ private
   def set_size_wood
     @size = Size.all.order(:id)
     @wood = Wood.all.order(:id)
+  end
+
+  def set_size_chart_data
+    @size_chart_data = Favorite.group(:size).order(:size_id).count
   end
 
 end

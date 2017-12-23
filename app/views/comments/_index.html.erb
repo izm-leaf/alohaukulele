@@ -4,13 +4,17 @@
       <li>
         <p class="left"><%= comment.user.name %>さんがコメントしました。</p>
         <p class="left"><%= comment.content %></p>
+
         <% if user_signed_in? %>
-          <p class="right">
-            <%= link_to '', edit_ukulele_comment_path(ukulele, comment), class: "fa fa-pencil-square-o fa-lg" %>
-            <%= link_to '', ukulele_comment_path(ukulele, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
-          </p>
-        <% end %>
-      </li>
+          <% if current_user.id == comment.user.id %>
+            <p class="right">
+              <%= link_to '', edit_ukulele_comment_path(ukulele, comment), class: "fa fa-pencil-square-o fa-lg" %>
+              <%= link_to '', ukulele_comment_path(ukulele, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除していいですか？' } %>
+            </p>
+          <% end %>
+
+        </li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
